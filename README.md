@@ -1,8 +1,6 @@
 # Scabbia2 Services Component
 
-**Scabbia2** is an open source PHP framework project which is currently on planning stage. Keep visiting [project homepage](http://scabbiafw.com/) and [repositories](https://github.com/scabbiafw/) for further updates.
-
-[This repository](https://github.com/scabbiafw/scabbia2-services/) contains the files of Scabbia2 Services Component which is probably required for Scabbia2 Framework to run.
+[This component](https://github.com/scabbiafw/scabbia2-services/) is a tiny dependency management container implementation allow you to share, produce and access instances/variables easily.
 
 [![Build Status](https://travis-ci.org/scabbiafw/scabbia2-services.png?branch=master)](https://travis-ci.org/scabbiafw/scabbia2-services)
 [![Total Downloads](https://poser.pugx.org/scabbiafw/scabbia2-services/downloads.png)](https://packagist.org/packages/scabbiafw/scabbia2-services)
