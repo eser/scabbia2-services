@@ -13,8 +13,8 @@
 
 namespace Scabbia\Services;
 
-use \ArrayAccess;
-use \InvalidArgumentException;
+use ArrayAccess;
+use InvalidArgumentException;
 
 /**
  * Service container and registry
@@ -78,9 +78,8 @@ class Services implements ArrayAccess
      * @param string    $uName             name of the service
      * @param callable  $uCallback         callback generates service instances
      *
-     * @return void
-     *
      * @throws InvalidArgumentException if the service is not defined
+     * @return void
      */
     public function decorate($uName, $uCallback)
     {
@@ -98,9 +97,8 @@ class Services implements ArrayAccess
      *
      * @param string    $uId               name of the service
      *
-     * @return mixed the service instance
-     *
      * @throws InvalidArgumentException if the service is not defined
+     * @return mixed the service instance
      */
     public function offsetGet($uId)
     {
