@@ -56,7 +56,7 @@ class Services implements ArrayAccess
      */
     public function offsetSet($uId, $uValue)
     {
-        $this->services[$uId] = [$uValue, true, []];
+        $this->services[$uId] = [$uValue, true];
     }
 
     /**
@@ -69,7 +69,7 @@ class Services implements ArrayAccess
      */
     public function setFactory($uName, $uCallback)
     {
-        $this->services[$uName] = [$uCallback, false, []];
+        $this->services[$uName] = [$uCallback, false];
     }
 
     /**
@@ -88,8 +88,18 @@ class Services implements ArrayAccess
         }
 
         $tService = $this->services[$uName];
+        $tClosure = function () use ($tService, $uCallback) {
+            // it's a shared instance, not a factory.
+            if ($tService[1] === true) {
+                $tValue = $tService[0];
+            } else {
+                $tValue = call_user_func($tService[0]);
+            }
 
-        $this->services[$uName] = [$uCallback, $tService[1], [$tService[0]]];
+            return call_user_func($uCallback, $tValue);
+        };
+
+        $this->services[$uName] = [$tClosure, false];
     }
 
     /**
@@ -113,7 +123,7 @@ class Services implements ArrayAccess
             return $tService[0];
         }
 
-        return call_user_func_array($tService[0], $tService[2]);
+        return call_user_func($tService[0]);
     }
 
     /**
